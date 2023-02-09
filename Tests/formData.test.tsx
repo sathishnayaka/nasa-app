@@ -3,7 +3,7 @@ import React from "react";
 import { render, fireEvent,waitFor ,act} from "@testing-library/react";
 import fetchMock from 'jest-fetch-mock';
 import '@testing-library/jest-dom/extend-expect';
-import Form from "../src/formdata";
+import FormData from "../src/formdata";
 
 jest.mock('node-fetch');
 
@@ -40,7 +40,7 @@ describe("App", () => {
     };
   });
   it("renders input and submit button", () => {
-    const { getByPlaceholderText, getByText } = render(<Form />);
+    const { getByPlaceholderText, getByText } = render(<FormData />);
     const input = getByPlaceholderText("Enter Asteroid ID");
     const submitButton = getByText("Submit");
     expect(input).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe("App", () => {
   });
 
   it("disables submit button if input is empty", () => {
-    const { getByPlaceholderText, getByText } = render(<Form />);
+    const { getByPlaceholderText, getByText } = render(<FormData />);
     const input = getByPlaceholderText("Enter Asteroid ID");
     const submitButton = getByText("Submit");
     expect(submitButton).toBeDisabled();
@@ -68,7 +68,7 @@ describe("App", () => {
       json: () => Promise.resolve(apiData)
     });
 
-    const { getByText, getByPlaceholderText } = render(<Form />);
+    const { getByText, getByPlaceholderText } = render(<FormData />);
     const textInput = getByPlaceholderText('Enter Asteroid ID');
     const submitButton = getByText('Submit');
 
@@ -92,7 +92,7 @@ describe("App", () => {
       json: () => Promise.resolve(apiData)
     });
 
-    const { getByText } = render(<Form />);
+    const { getByText } = render(<FormData />);
     const submitButton = getByText('Generate Random');
     fireEvent.submit(submitButton);
 
@@ -106,7 +106,7 @@ describe("App", () => {
     (fetch as jest.MockedFunction<typeof fetch>).mockRejectedValue(apiError);
     jest.spyOn(window, 'alert').mockImplementation(() => {});
 
-    const { getByText, getByPlaceholderText } = render(<Form />);
+    const { getByText, getByPlaceholderText } = render(<FormData />);
     const textInput = getByPlaceholderText('Enter Asteroid ID');
     const submitButton = getByText('Submit');
 

@@ -4,7 +4,7 @@ interface FormData {
   text: string;
 }
 
-const Form: React.FC = () => {
+const FormData: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({ text: '' });
   const [apiData, setApiData] = useState<any>(null);
 
@@ -55,5 +55,5 @@ const Form: React.FC = () => {
   );
 };
 
-export default Form;
+export default FormData;
 
