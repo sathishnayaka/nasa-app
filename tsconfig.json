@@ -20,7 +20,12 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  // "files": [
+  //   "src\\*.tsx",
+  //   "Tests\\*.tsx"
+  // ],
   "include": [
-    "src"
-  ]
+    "src",
+    "Tests"
+, "Tests"  ]
 }
